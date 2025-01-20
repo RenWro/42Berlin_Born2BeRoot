@@ -19,13 +19,17 @@ The project aims to install Debian virtual machine with functional WordPress sit
 
 <h3>What's a partition ? And more generally how does LVM (Logical Volume Management) work ?</h3>
 
+<h3>What's the hostname of the machine and how to change it?</h3>
+
+<h3>How do you check for partitions?</h3>
+
 <h3>What's sudo ?</h3>
 
-<h3>What's an UFW and what's the value of using it ?</h3>
+<h3>What's an UFW and what's the value of using it? How to add new rules?</h3>
 
-<h3>What's SSH (Secure Shell) and what's the value of using it ?</h3>
+<h3>What's SSH (Secure Shell) and what's the value of using it? How do you check it?</h3>
 
-<h3>What is cron ?</h3>
+<h3>How does the script works and what is cron?</h3>
 
 
 <h1>What's in this repo?</h1>
