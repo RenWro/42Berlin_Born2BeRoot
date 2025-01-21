@@ -160,6 +160,7 @@ You can find the script monitoring.sh in this repository.
 
 ---
 <h1>References</h1>
+<a href="https://www.computerweekly.com/de/definition/sudo">Definition sudo - Computerweekly magazine</a><br>
 <a href="https://medium.com/identity-beyond-borders/the-importance-of-implementing-a-strong-password-policy-bb08a9c7b475">The Importance of Implementing a Strong Password Policy</a><br>
 <a href="https://www.debian.org/">Debian</a><br>
 <a href="https://rockylinux.org/">Rocky Linux</a><br>
