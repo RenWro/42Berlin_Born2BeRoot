@@ -1,36 +1,59 @@
-# 42Berlin_Born2BeRoot
+# Table of Contents
+
+1. [About the project](#about-the-project)
+2. [General questions related to the project](#general-questions-related-to-the-project)
+    1. [How does a virtual machine work ? And what its purpose?](#how-does-a-virtual-machine-work-and-what-its-purpose)
+    2. [Why did I choose Debian?](#why-did-i-choose-debian)
+    3. [What's the difference between Debian and Rocky?](#whats-the-difference-between-debian-and-rocky)
+    4. [What's the difference between aptitude, apt and what's APPArmor ?](#whats-the-difference-between-aptitude-apt-and-whats-apparmor)
+    5. [What the advantages of a strong password policy? How's its implementation?](#what-the-advantages-of-a-strong-password-policy-hows-its-implementation)
+    6. [What's a partition ? And more generally how does LVM (Logical Volume Management) work ?](#whats-a-partition-and-more-generally-how-does-lvm-logical-volume-management-work)
+    7. [What's the hostname of the machine and how to change it?](#whats-the-hostname-of-the-machine-and-how-to-change-it)
+    8. [How do you check for partitions?](#how-do-you-check-for-partitions)
+    9. [What's sudo ?](#whats-sudo)
+    10. [What's an UFW and what's the value of using it? How to add new rules?](#whats-an-ufw-and-whats-the-value-of-using-it-how-to-add-new-rules)
+    11. [What's SSH (Secure Shell) and what's the value of using it? How do you check it?](#whats-ssh-secure-shell-and-whats-the-value-of-using-it-how-do-you-check-it)
+    12. [How does the script works and what is cron?](#how-does-the-script-works-and-what-is-cron)
+    13. [Monitoring](#monitoring)
+3. [What's in this repo?](#whats-in-this-repo)
+4. [References](#references)
+
+---
+
+# About the project
 The project aims to install Debian virtual machine.
 
 ![Born2Be](https://github.com/user-attachments/assets/f95de2dd-df3e-4e0f-9b5d-073eee581a06)
 
-<h1>About the project</h1>
+---
 
-<h1>General questions related to the project</h1>
+# General questions related to the project
 
-<h3>How does a virtual machine work ? And what its purpose?</h3>
-
+### How does a virtual machine work ? And what its purpose?
 According to RedHat, a virtual machine (VM) is a computing environment that functions as an isolated system with its own CPU, memory, network interface, and storage, created from a pool of hardware resources. Software called a hypervisor isolates the necessary computing resources and enables the creation and management of VMs.<br>
 
 The physical machine that runs the VMs is called the host machine, host computer, host operating system, or simply host. The many VMs that use its resources are guest machines, guest computers, guest operating systems, or simply guests. The hypervisor treats compute resources—like CPU, memory, and storage—as a pool of resources that can easily be relocated between existing guests or to new virtual machines.<br>
 
-VMs allow multiple different operating systems to run simultaneously on a single computer—like running a  Linux® distribution on a MacOS or Windows system. Each operating system runs in the same way an operating system or application normally would on the host hardware, so the end user experience emulated within the VM is nearly identical to a real-time operating system experience running on a physical machine. <br>
+VMs allow multiple different operating systems to run simultaneously on a single computer—like running a Linux® distribution on a MacOS or Windows system. Each operating system runs in the same way an operating system or application normally would on the host hardware, so the end user experience emulated within the VM is nearly identical to a real-time operating system experience running on a physical machine. <br>
 
-<h3>Why did I choose Debian?</h3>
+### Why did I choose Debian?
+...
 
-<h3>What's the difference between Debian and Rocky?</h3>
-
-
-<h4>Debian</h4>
+### What's the difference between Debian and Rocky?
 Debian is excellent for those who want a versatile, stable, and free operating system for various use cases, from home labs to enterprise setups.
 
-<ul><li>Overview: Debian is one of the oldest and most popular Linux distributions, known for its stability and reliability. It is a community-driven distribution that focuses on free software, and it has a massive package repository.</li>
+#### Debian
+Debian is excellent for those who want a versatile, stable, and free operating system for various use cases, from home labs to enterprise setups.
+
+<ul>
+<li>Overview: Debian is one of the oldest and most popular Linux distributions, known for its stability and reliability. It is a community-driven distribution that focuses on free software, and it has a massive package repository.</li>
 <li>Package Management: Debian uses the .deb package format, and it relies on the APT package management system.</li>
 <li>Release Cycle: Debian follows a "frozen" release cycle, with new stable versions being released approximately every two years. It is known for being a bit slower to release new software in favor of stability.</li>
 <li>Target Users: Debian is widely used by both developers and system administrators who need a stable, versatile, and free OS. It is commonly used in servers, workstations, and even desktops by advanced users.</li>
 <li>Community Support: As a community-driven project, Debian has a large and active user base, which means there are plenty of forums, mailing lists, and resources available.</li>
-
 </ul>
-<h4>Rocky</h4>
+
+#### Rocky
 Rocky Linux is the go-to choice for organizations seeking a RHEL-compatible, stable, long-term support system, particularly after the shift in CentOS's direction.
 
 <ul>
@@ -40,18 +63,17 @@ Rocky Linux is the go-to choice for organizations seeking a RHEL-compatible, sta
 <li>Target Users: Rocky Linux is primarily used in enterprise environments that require stability, long-term support, and compatibility with RHEL. It’s perfect for businesses and organizations that were previously using CentOS or RHEL.</li>
 <li>Community Support: Rocky Linux is a community-driven project that is backed by various contributors, and it has extensive support through forums, documentation, and mailing lists.</li>
 </ul>
+###<h3>What's the difference between aptitude, apt and what's APPArmor ?</h3>
 
-<h3>What's the difference between aptitude, apt and what's APPArmor ?</h3>
-
-AppArmor provides Mandatory Access Control (MAC) security. In fact, AppArmor allows the system administrator to restrict the actions that processes can perform. For example, if an installed application can take photos by accessing the camera application, but the administrator denies this privilege, the application will not be able to access the camera application. If a vulnerability occurs (some of the restricted tasks are performed), AppArmor blocks the application so that the damage does not spread to the rest of the system.
+#### AppArmor provides Mandatory Access Control (MAC) security. In fact, AppArmor allows the system administrator to restrict the actions that processes can perform. For example, if an installed application can take photos by accessing the camera application, but the administrator denies this privilege, the application will not be able to access the camera application. If a vulnerability occurs (some of the restricted tasks are performed), AppArmor blocks the application so that the damage does not spread to the rest of the system.
 In AppArmor, processes are restricted by profiles. Profiles can work in complain-mode and in enforce-mode. In enforce mode, AppArmor prohibits applications from performing restricted tasks. In complain-mode, AppArmor allows applications to do these tasks, but creates a registry entry to display the complaint.
 
-And what is the difference between Apt and Aptitute?
+#### And what is the difference between Apt and Aptitute?
 In Debian-based OS distributions, the default package manager we can use is dpkg. This tool allows us to install, remove and manage programs on our operating system. However, in most cases, these programs come with a list of dependencies that must be installed for the main program to function properly. One option is to manually install these dependencies. However, APT (Advanced Package Tool), which is a tool that uses dpkg, can be used to install all the necessary dependencies when installing a program. So now we can install a useful program with a single command.
 APT can work with different back-ends and fron-ends to make use of its services. One of them is apt-get, which allows us to install and remove packages. Along with apt-get, there are also many tools like apt-cache to manage programs. In this case, apt-get and apt-cache are used by apt. Thanks to apt we can install .deb programs easily and without worrying about dependencies. But in case we want to use a graphical interface, we will have to use aptitude. Aptitude also does better control of dependencies, allowing the user to choose between different dependencies when installing a program.
 
 
-<h3>What the advantages of a strong password policy? How's its implementation?</h3>
+### <h3>What the advantages of a strong password policy? How's its implementation?</h3>
 
 
 A password policy is a set of guidelines and rules that define how passwords should be created, used, and protected in an organization’s network or web application. The policy may include requirements for password length, complexity, and expiration, as well as guidelines for protecting passwords from unauthorized access or disclosure. A password policy is intended to help ensure the security of an organization’s digital assets by reducing the risk of password-related attacks, such as brute-force attacks or password cracking. It is typically enforced through security software or by administrative procedures, and users are expected to comply with the policy in order to access the organization’s resources. By implementing a password policy, you can establish clear guidelines for users to follow when creating and utilizing passwords on your web application. 
