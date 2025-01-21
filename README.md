@@ -99,6 +99,20 @@ By using LVM, we can expand the storage of any partition (now known as a logical
 <h3>How do you check for partitions?</h3>
 
 <h3>What's sudo ?</h3>
+Sudo is a command-line utility for Unix and Unix-based operating systems such as Linux and macOS . The utility provides an efficient way to grant users or groups of users temporary privileged access to system resources so that they can execute commands that they cannot run using their normal accounts. Users can even be granted permission to execute commands under the root account—the account with the highest privileges on Unix systems. Sudo also logs all commands and arguments so that administrators can track sudo users' behavior.
+
+Many sources say that sudo stands for superuser do , which used to be true. However, the group that developed sudo stopped using that name more than a decade ago. According to the group's website, sudo now means su "do" , indicating a tool that provides su-like functionality.<br>
+
+sudo helps minimize such risks and gives system administrators more control. An administrator can do the following:
+
+<ul>
+<li>Configure the sudoers file to allow specific users or groups to run some or all commands under the root account or another privileged account.</li>
+<li>Maintain granular control over which commands a user can run on each host based on the command names and their directory locations.</li>
+<li>View logged activity , which shows which sudo users executed which commands and when they were executed.</li>
+<li>Control how long users can execute privileged-level commands after entering their password.</li>
+<li>Configure settings for sudo plugins , file paths, debugging , and the frontend interface.</li>
+<li>Maintain a single sudoers file that controls access for multiple users on multiple systems.</li>
+</ul>
 
 <h3>What's an UFW and what's the value of using it? How to add new rules?</h3>
 
