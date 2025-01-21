@@ -13,16 +13,20 @@ The project aims to install Debian virtual machine.
 
 <h3>What's the difference between Debian and Rocky?</h3>
 
+
 <h4>Debian</h4>
 Debian is excellent for those who want a versatile, stable, and free operating system for various use cases, from home labs to enterprise setups.
+
 <ul><li>Overview: Debian is one of the oldest and most popular Linux distributions, known for its stability and reliability. It is a community-driven distribution that focuses on free software, and it has a massive package repository.</li>
 <li>Package Management: Debian uses the .deb package format, and it relies on the APT package management system.</li>
 <li>Release Cycle: Debian follows a "frozen" release cycle, with new stable versions being released approximately every two years. It is known for being a bit slower to release new software in favor of stability.</li>
 <li>Target Users: Debian is widely used by both developers and system administrators who need a stable, versatile, and free OS. It is commonly used in servers, workstations, and even desktops by advanced users.</li>
 <li>Community Support: As a community-driven project, Debian has a large and active user base, which means there are plenty of forums, mailing lists, and resources available.</li>
+
 </ul>
 <h4>Rocky</h4>
 Rocky Linux is the go-to choice for organizations seeking a RHEL-compatible, stable, long-term support system, particularly after the shift in CentOS's direction.
+
 <ul>
 <li>Overview: Rocky Linux is a relatively new distribution, created as a community-driven replacement for CentOS after Red Hat shifted CentOS to CentOS Stream. It is designed to be binary-compatible with Red Hat Enterprise Linux (RHEL).</li>
 <li>Package Management: Rocky Linux uses the .rpm package format, and it relies on the YUM or DNF package management systems.</li>
