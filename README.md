@@ -5,9 +5,15 @@ The project aims to install Debian virtual machine.
 
 <h1>About the project</h1>
 
-<h1>General questions related to the project</h1></h3>
+<h1>General questions related to the project</h1>
 
 <h3>How does a virtual machine work ? And what its purpose?</h3>
+
+According to RedHat, a virtual machine (VM) is a computing environment that functions as an isolated system with its own CPU, memory, network interface, and storage, created from a pool of hardware resources. Software called a hypervisor isolates the necessary computing resources and enables the creation and management of VMs.
+
+The physical machine that runs the VMs is called the host machine, host computer, host operating system, or simply host. The many VMs that use its resources are guest machines, guest computers, guest operating systems, or simply guests. The hypervisor treats compute resources—like CPU, memory, and storage—as a pool of resources that can easily be relocated between existing guests or to new virtual machines.
+
+VMs allow multiple different operating systems to run simultaneously on a single computer—like running a  Linux® distribution on a MacOS or Windows system. Each operating system runs in the same way an operating system or application normally would on the host hardware, so the end user experience emulated within the VM is nearly identical to a real-time operating system experience running on a physical machine. 
 
 <h3>Why did I choose Debian?</h3>
 
@@ -118,23 +124,25 @@ There are three different techniques that SSH uses to encrypt:
 <h3>Monitoring</h3>
 
 You have to create a simple script called monitoring.sh It must be developed in bash. At server startup, the script will display some information (listed below) on all ter- minals every 10 minutes (take a look at wall). The banner is optional. No error must be visible. Your script must always be able to display the following information:
-• The architecture of your operating system and its kernel version.
-• The number of physical processors.
-• The number of virtual processors.
-• The current available RAM on your server and its utilization rate as a percentage.
-• The current available memory on your server and its utilization rate as a percentage.
-• The current utilization rate of your processors as a percentage.
-• The date and time of the last reboot.
-• Whether LVM is active or not.
-• The number of active connections.
-• The number of users using the server.
-• The IPv4 address of your server and its MAC (Media Access Control) address.
-• The number of commands executed with the sudo program.
 
-You can find the script monitoring.sh in this repository.
-
+<ul>
+<li>The architecture of your operating system and its kernel version.</li>
+<li>The number of physical processors.</li>
+<li>The number of virtual processors.</li>
+<li>The current available RAM on your server and its utilization rate as a percentage.</li>
+<li>The current available memory on your server and its utilization rate as a percentage.</li>
+<li>The current utilization rate of your processors as a percentage.</li>
+<li>The date and time of the last reboot.</li>
+<li>Whether LVM is active or not.</li>
+<li>The number of active connections.</li>
+<li>The number of users using the server.</li>
+<li>The IPv4 address of your server and its MAC (Media Access Control) address.</li>
+<li>The number of commands executed with the sudo program.</li>
+</ul>
 
 <h1>What's in this repo?</h1>
+
+You can find the script monitoring.sh in this repository.
 
 ---
 <h1>References</h1>
@@ -142,6 +150,8 @@ You can find the script monitoring.sh in this repository.
 <a href="https://www.debian.org/">Debian</a>
 <a href="https://rockylinux.org/">Rocky Linux</a>
 <a href="https://github.com/ayoub0x1/born2beroot/blob/main/README.md">Ayoub Github Readme</a>
+<a href="https://www.redhat.com/en/topics/virtualization/what-is-a-virtual-machine">What is a Virtual Machine - RedHat</a>
+
 
 
 
