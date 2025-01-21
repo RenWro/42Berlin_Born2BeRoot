@@ -139,6 +139,10 @@ sudo helps minimize such risks and gives system administrators more control. An 
 
 <h3>What's an UFW and what's the value of using it? How to add new rules?</h3>
 
+UFW (Uncomplicated Firewall) is a software application responsible for ensuring that the system administrator can manage iptables in a simple way. It is a tool that minimizes the effort of setting up a firewall by starting with an optimal default configuration. In many cases, it’s only necessary to know the name of the applications to be authorized. Since it is very difficult to work with iptables, UFW provides us with an interface to modify the firewall of our device (netfilter) without compromising security. Once we have UFW installed, we can choose which ports we want to allow connections, and which ports we want to close. This will also be very useful with SSH, greatly improving all security related to communications between devices.
+
+UFW is available for all Linux distributions. UFW uses ports. A port is an unsigned integer from 0 to 65535 that allows the routing of data to a specific service. A port can be open, closed, or stealth. The desired behavior of a firewall is to allow incoming connections only on previously authorized (open) ports, blocking all other (stealth) ports. That’s why the UFW default policy is “deny incoming traffic” and “allow outgoing traffic.” As a result, our server can send requests to the outside world and receive responses. At the same time, the firewall will block all unsolicited incoming connections.
+
 <h3>What's SSH (Secure Shell) and what's the value of using it? How do you check it?</h3>
 
 SSH or Secure Shell is a remote administration protocol that allows users to control and modify their servers over the Internet thanks to an authentication mechanism. Provides a mechanism to authenticate a user remotely, transfer data from the client to the host, and return a response to the request made by the client.
@@ -157,6 +161,35 @@ There are three different techniques that SSH uses to encrypt:
 </ul>
 
 <h3>How does the script works and what is cron?</h3>
+
+There are two commands that will be very helpful in case of being system administrators. 
+These commands are:
+<ul>
+<li>Cron: Linux task manager that allows us to execute commands at a certain time. We can automate some tasks just by telling cron what command we want to run at a specific time. For example, if we want to restart our server every day at 4:00 am, instead of having to wake up at that time, cron will do it for us.</li>
+<li>Wall: command used by the root user to send a message to all users currently connected to the server. If the system administrator wants to alert about a major server change that could cause users to log out, the root user could alert them with wall.</li>
+</ul>
+
+Cron specifically is a job scheduling utility present in Unix-like systems, including Linux virtual machines (VMs). It allows you to schedule tasks to be executed automatically at specific times or intervals. The crond daemon runs in the background and reads the crontab (cron table) files to execute predefined scripts or commands at the specified times.
+
+**Cron jobs are useful for automating repetitive tasks such as backups, log management, and system maintenance, ensuring that these tasks are performed regularly without manual intervention.**
+
+In a Linux VM, cron jobs are managed through the crontab command. Here’s how it works:
+1. Editing the Cron Table: Use the crontab -e command to edit the cron table. This command opens a text editor where you can add or modify cron job entries. If it’s your first time using crontab -e, you might be prompted to choose a text editor.
+2. Syntax of Cron Jobs: Each cron job entry consists of a schedule and a command. The schedule is defined by five fields in the following order:
+Minute (0-59)
+Hour (0-23)
+Day of the month (1-31)
+Month (1-12)
+Day of the week (0-6, where 0 or 7 is Sunday)
+For example, 0 22 1-5 * * schedules a job to run at 22:00 every day from Monday to Friday.
+3. Adding a Cron Job: To add a cron job, you write the schedule and the command in the crontab file. For instance:
+4.     0 22 1-5 * * /path/to/your/script.sh
+
+4. This line runs /path/to/your/script.sh at 22:00 every day from Monday to Friday.
+5. Running the Cron Daemon: The cron daemon continuously checks the crontab files for scheduled tasks and executes them at the specified times.
+6. Viewing Cron Jobs: Use crontab -l to list all the cron jobs for the current user.
+7. Deleting Cron Jobs: Use crontab -r to remove all cron jobs for the current user. If you want to be prompted before removing each job, use crontab -i.
+
 
 <h3>Monitoring</h3>
 
@@ -189,6 +222,9 @@ You can find the script monitoring.sh in this repository.
 <a href="https://rockylinux.org/">Rocky Linux</a><br>
 <a href="https://github.com/ayoub0x1/born2beroot/blob/main/README.md">Ayoub Github Readme</a><br>
 <a href="https://www.redhat.com/en/topics/virtualization/what-is-a-virtual-machine">What is a Virtual Machine - RedHat</a><br>
+<a href="https://www.baeldung.com/linux/uncomplicated-firewall"> Uncomplicated Firewall - Baeldung</a><br>
+<a href="https://opensource.com/article/17/11/how-use-cron-linux"> How to use cron Linux</a><br>
+<a href="https://www.freecodecamp.org/news/cron-jobs-in-linux"> Cron Jobs in Linux</a><br>
 
 
 
