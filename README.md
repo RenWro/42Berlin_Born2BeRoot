@@ -37,12 +37,12 @@ The physical machine that runs the VMs is called the host machine, host computer
 VMs allow multiple different operating systems to run simultaneously on a single computer—like running a Linux® distribution on a MacOS or Windows system. Each operating system runs in the same way an operating system or application normally would on the host hardware, so the end user experience emulated within the VM is nearly identical to a real-time operating system experience running on a physical machine. <br>
 
 ### Why did I choose Debian?
-Debian is excellent for those who want a versatile, stable, and free operating system for various use cases, from home labs to enterprise setups.
+Debian is excellent for those who want a versatile, stable, and free operating system for various use cases, from home labs to enterprise setups. It's very known and largely used. Rocky Linux is the go-to choice for organizations seeking a RHEL-compatible, stable, long-term support system, particularly after the shift in CentOS's direction, less common but still interesting.
 
 ### What's the difference between Debian and Rocky?
 
 #### Debian
-Debian is excellent for those who want a versatile, stable, and free operating system for various use cases, from home labs to enterprise setups. It's very known and largely used. Rocky Linux is the go-to choice for organizations seeking a RHEL-compatible, stable, long-term support system, particularly after the shift in CentOS's direction, less common but still interesting.
+
 
 <ul>
 <li>Overview: Debian is one of the oldest and most popular Linux distributions, known for its stability and reliability. It is a community-driven distribution that focuses on free software, and it has a massive package repository.</li>
