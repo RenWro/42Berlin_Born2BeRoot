@@ -9,12 +9,11 @@
     5. [What the advantages of a strong password policy? How's its implementation?](#what-the-advantages-of-a-strong-password-policy-hows-its-implementation)
     6. [What's a partition ? And more generally how does LVM (Logical Volume Management) work ?](#whats-a-partition-and-more-generally-how-does-lvm-logical-volume-management-work)
     7. [What's the hostname of the machine and how to change it?](#whats-the-hostname-of-the-machine-and-how-to-change-it)
-    8. [How do you check for partitions?](#how-do-you-check-for-partitions)
-    9. [What's sudo ?](#whats-sudo)
-    10. [What's an UFW and what's the value of using it? How to add new rules?](#whats-an-ufw-and-whats-the-value-of-using-it-how-to-add-new-rules)
-    11. [What's SSH (Secure Shell) and what's the value of using it? How do you check it?](#whats-ssh-secure-shell-and-whats-the-value-of-using-it-how-do-you-check-it)
-    12. [How does the script works and what is cron?](#how-does-the-script-works-and-what-is-cron)
-    13. [Monitoring](#monitoring)
+    8. [What's sudo ?](#whats-sudo)
+    9. [What's an UFW and what's the value of using it? How to add new rules?](#whats-an-ufw-and-whats-the-value-of-using-it-how-to-add-new-rules)
+    10. [What's SSH (Secure Shell) and what's the value of using it? How do you check it?](#whats-ssh-secure-shell-and-whats-the-value-of-using-it-how-do-you-check-it)
+    11. [How does the script works and what is cron?](#how-does-the-script-works-and-what-is-cron)
+    12. [Monitoring](#monitoring)
 3. [What's in this repo?](#whats-in-this-repo)
 4. [References](#references)
 
@@ -116,8 +115,6 @@ By using LVM, we can expand the storage of any partition (now known as a logical
 
 <h3>What's the hostname of the machine and how to change it?</h3>
 
-<h3>How do you check for partitions?</h3>
-
 <h3>What's sudo ?</h3>
 Sudo is a command-line utility for Unix and Unix-based operating systems such as Linux and macOS . The utility provides an efficient way to grant users or groups of users temporary privileged access to system resources so that they can execute commands that they cannot run using their normal accounts. Users can even be granted permission to execute commands under the root account—the account with the highest privileges on Unix systems. Sudo also logs all commands and arguments so that administrators can track sudo users' behavior.
 
@@ -187,6 +184,18 @@ For example, 0 22 1-5 * * schedules a job to run at 22:00 every day from Monday 
 6. Viewing Cron Jobs: Use crontab -l to list all the cron jobs for the current user.
 7. Deleting Cron Jobs: Use crontab -r to remove all cron jobs for the current user. If you want to be prompted before removing each job, use crontab -i.
 
+Operation of each crontab parameter:
+
+m ➤ Corresponds to the minute at which the script will be executed, the value ranges from 0 to 59.
+
+h ➤ The exact hour, the 24-hour format is used, the values range from 0 to 23, with 0 being 12:00 midnight. dom ➤ refers to the day of the month, for example, you can specify 15 if you want to execute every day 15.
+
+dow ➤ means the day of the week, it can be numeric (0 to 7, where 0 and 7 are Sunday) or the first three letters of the day in English: mon, tue, wed, thu, fri, sat, sun.
+
+user ➤ Defines the user who will execute the command, it can be root, or another user as long as it has permission to execute the script.
+
+command ➤ Refers to the command or the absolute path of the script to be executed.
+
 
 <h3>Monitoring</h3>
 
@@ -220,19 +229,60 @@ To check if sudo have been installed correctly we must switch to root user and t
 
     sudo -V
 
-<h3>Add user</h3>
-Still in the root user we will create an aditional user with 
-        
-    sudo adduser <login>
+<h3>Create new user via sudo adduser</h3>
 
-<h3>Check group ID</h3>
-To see all groups and the users in any of them
+Create new user via sudo adduser <username>.
 
-        getent group <groupname>
+    $ sudo adduser <username>
+
+Verify whether user was successfully created via getent passwd <username>.
+
+    $ getent passwd <username>
+
+Verify newly-created user's password expiry information via sudo chage -l <username>.
+
+    $ sudo chage -l <username>
+
+Last password change					: <last-password-change-date>
+Password expires					: <last-password-change-date + PASS_MAX_DAYS>
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: <PASS_MIN_DAYS>
+Maximum number of days between password change		: <PASS_MAX_DAYS>
+Number of days of warning before password expires	: <PASS_WARN_AGE>
+
 
 <h3>To add user to a group</h3>
+Creating a New Group
 
-    sudo adduser <user> <groupname>
+Create new user42 group via sudo addgroup user42.
+
+    $ sudo addgroup user42
+
+Add user to user42 group via sudo adduser <username> user42.
+
+    $ sudo adduser <username> user42
+
+Alternatively, add user to user42 group via sudo usermod -aG user42 <username>.
+
+    $ sudo usermod -aG user42 <username>
+
+Verify whether user was successfully added to user42 group via getent group user42.
+
+    $ getent group user42
+
+<h3>How do you check cron?</h3>
+
+Check root's scheduled cron jobs via sudo crontab -u root -l.
+
+    $ sudo crontab -u root -l
+
+<h3>Verify UFW</h3>
+Verify whether ufw was successfully installed via dpkg -l | grep ufw.
+
+    $ dpkg -l | grep ufw
+
+
 
 ---
 <h1>References</h1>
