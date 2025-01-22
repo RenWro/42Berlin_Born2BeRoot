@@ -37,13 +37,12 @@ The physical machine that runs the VMs is called the host machine, host computer
 VMs allow multiple different operating systems to run simultaneously on a single computer—like running a Linux® distribution on a MacOS or Windows system. Each operating system runs in the same way an operating system or application normally would on the host hardware, so the end user experience emulated within the VM is nearly identical to a real-time operating system experience running on a physical machine. <br>
 
 ### Why did I choose Debian?
-...
+Debian is excellent for those who want a versatile, stable, and free operating system for various use cases, from home labs to enterprise setups.
 
 ### What's the difference between Debian and Rocky?
-Debian is excellent for those who want a versatile, stable, and free operating system for various use cases, from home labs to enterprise setups.
 
 #### Debian
-Debian is excellent for those who want a versatile, stable, and free operating system for various use cases, from home labs to enterprise setups.
+Debian is excellent for those who want a versatile, stable, and free operating system for various use cases, from home labs to enterprise setups. It's very known and largely used. Rocky Linux is the go-to choice for organizations seeking a RHEL-compatible, stable, long-term support system, particularly after the shift in CentOS's direction, less common but still interesting.
 
 <ul>
 <li>Overview: Debian is one of the oldest and most popular Linux distributions, known for its stability and reliability. It is a community-driven distribution that focuses on free software, and it has a massive package repository.</li>
@@ -54,8 +53,6 @@ Debian is excellent for those who want a versatile, stable, and free operating s
 </ul>
 
 #### Rocky
-Rocky Linux is the go-to choice for organizations seeking a RHEL-compatible, stable, long-term support system, particularly after the shift in CentOS's direction.
-
 <ul>
 <li>Overview: Rocky Linux is a relatively new distribution, created as a community-driven replacement for CentOS after Red Hat shifted CentOS to CentOS Stream. It is designed to be binary-compatible with Red Hat Enterprise Linux (RHEL).</li>
 <li>Package Management: Rocky Linux uses the .rpm package format, and it relies on the YUM or DNF package management systems.</li>
@@ -213,6 +210,29 @@ You have to create a simple script called monitoring.sh It must be developed in 
 <h1>What's in this repo?</h1>
 
 You can find the script monitoring.sh in this repository.
+
+---
+
+<h1>Shortcuts for evaluation</h1>
+
+<h3>Check if sudo is installed</h3>
+To check if sudo have been installed correctly we must switch to root user and then use the command
+
+    sudo -V
+
+<h3>Add user</h3>
+Still in the root user we will create an aditional user with 
+        
+    sudo adduser <login>
+
+<h3>Check group ID</h3>
+To see all groups and the users in any of them
+
+        getent group <groupname>
+
+<h3>To add user to a group</h3>
+
+    sudo adduser <user> <groupname>
 
 ---
 <h1>References</h1>
