@@ -61,8 +61,10 @@ Debian is excellent for those who want a versatile, stable, and free operating s
 </ul>
 <h3>What's the difference between aptitude, apt and what's APPArmor ?</h3>
 
+APPArmor is a security module in the Linux kernel that allows the system administrator to restrict the capabilities of a program. Aptitude is an enhanced version of apt. APT is a lower-level package manager and aptitude is a high-level package manager. Another big difference is the functionality offered by both tools. Aptitude offers better functionality compared to apt-get. Both are able to provide the necessary means to perform package management. However, if you are looking for a more feature-rich approach, Aptitude should be it.
+
 #### AppArmor provides Mandatory Access Control (MAC) security. 
-In fact, AppArmor allows the system administrator to restrict the actions that processes can perform. For example, if an installed application can take photos by accessing the camera application, but the administrator denies this privilege, the application will not be able to access the camera application. If a vulnerability occurs (some of the restricted tasks are performed), AppArmor blocks the application so that the damage does not spread to the rest of the system.
+AppArmor allows the system administrator to restrict the actions that processes can perform. For example, if an installed application can take photos by accessing the camera application, but the administrator denies this privilege, the application will not be able to access the camera application. If a vulnerability occurs (some of the restricted tasks are performed), AppArmor blocks the application so that the damage does not spread to the rest of the system.
 In AppArmor, processes are restricted by profiles. Profiles can work in complain-mode and in enforce-mode. In enforce mode, AppArmor prohibits applications from performing restricted tasks. In complain-mode, AppArmor allows applications to do these tasks, but creates a registry entry to display the complaint.
 
 #### And what is the difference between Apt and Aptitute?
@@ -224,10 +226,22 @@ You can find the script monitoring.sh in this repository.
 
 <h1>Shortcuts for evaluation</h1>
 
+<h3>Check that the ssh key in use</h3>
+
+    sudo service ssh status
+
+<h3>Check that you are using the Debian or Centos operating system.</h3>
+
+    uname -v o uname --kernel-version
+
 <h3>Check if sudo is installed</h3>
 To check if sudo have been installed correctly we must switch to root user and then use the command
 
     sudo -V
+    
+or to check the version
+    
+    which sudo
 
 <h3>Create new user via sudo adduser</h3>
 
@@ -271,6 +285,11 @@ Verify whether user was successfully added to user42 group via getent group user
 
     $ getent group user42
 
+Check that your user is within the "sudo" group.
+
+    $ getent group sudo
+
+
 <h3>How do you check cron?</h3>
 
 Check root's scheduled cron jobs via sudo crontab -u root -l.
@@ -278,11 +297,41 @@ Check root's scheduled cron jobs via sudo crontab -u root -l.
     $ sudo crontab -u root -l
 
 <h3>Verify UFW</h3>
-Verify whether ufw was successfully installed via dpkg -l | grep ufw.
+Verify whether ufw was successfully installed
 
     $ dpkg -l | grep ufw
 
+or
+    Check that the UFW program is installed on the virtual machine and check that it works correctly.
 
+    $ dpkg -s ufw
+    $ sudo service ufw status
+
+Check that the UFW service is in use.
+
+    sudo ufw status
+    sudo service ufw status
+
+
+<h3>List the active rules in UFW, the rule for port 4243 should only appear</h3>
+
+    sudo ufw status numbered
+
+<h3>Create a new rule for port 8080. Verify that it has been added to the active rules and then you can delete it.</h3>
+
+    sudo ufw allow 8080
+    sudo ufw status numbered
+    sudo ufw delete num_rule
+
+<h3>Modify the runtime of the script from 10 minutes to 1</h3>
+    
+    sudo crontab -u root -e
+
+![image](https://github.com/user-attachments/assets/df622aa2-3f41-42d7-ab80-0a0fdc3a5262)
+
+At last, make the script stop running when the server has started, but without modifying the script.
+
+    sudo /etc/init.d/cron stop
 
 ---
 <h1>References</h1>
