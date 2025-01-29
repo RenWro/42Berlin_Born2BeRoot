@@ -321,8 +321,11 @@ Check that the UFW service is in use.
 
     sudo ufw allow 8080
     sudo ufw status numbered
-    sudo ufw delete num_rule
+    sudo ufw delete num_rule[X]  
 
+or
+    sudo ufw delete allow 8080
+    
 <h3>Modify the runtime of the script from 10 minutes to 1</h3>
     
     sudo crontab -u root -e
